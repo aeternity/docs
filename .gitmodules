@@ -1,0 +1,17 @@
+[submodule "submodules/aeternity"]
+	path = submodules/aeternity
+	url = git@github.com:aeternity/aeternity.git
+	branch = master
+[submodule "submodules/protocol"]
+	path = submodules/protocol
+	url = git@github.com:aeternity/protocol.git
+	branch = master
+[submodule "submodules/aesophia"]
+	path = submodules/aesophia
+	url = git@github.com:aeternity/aesophia.git
+[submodule "submodules/aesophia_http"]
+	path = submodules/aesophia_http
+	url = git@github.com:aeternity/aesophia_http.git
+[submodule "submodules/aesophia_cli"]
+	path = submodules/aesophia_cli
+	url = git@github.com:aeternity/aesophia_cli.git
