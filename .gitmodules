@@ -15,3 +15,6 @@
 [submodule "submodules/aesophia_cli"]
 	path = submodules/aesophia_cli
 	url = git@github.com:aeternity/aesophia_cli.git
+[submodule "submodules/dincho"]
+	path = submodules/dincho
+	url = git@github.com:dincho/docs.git
