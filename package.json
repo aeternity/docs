@@ -1,0 +1,14 @@
+{
+  "name": "ae-docs",
+  "module": "main.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "simple-git": "^3.27.0"
+  }
+}

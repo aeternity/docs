@@ -1,0 +1,28 @@
+{
+  "repositories": [
+    {
+      "name": "aeternity",
+      "url": "https://github.com/aeternity/aeternity"
+    },
+    {
+      "name": "ae_mdw",
+      "url": "https://github.com/aeternity/ae_mdw"
+    },
+    {
+      "name": "aescan",
+      "url": "https://github.com/aeternity/aescan"
+    },
+    {
+      "name": "aepp-cli-js",
+      "url": "https://github.com/aeternity/aepp-cli-js"
+    },
+    {
+      "name": "hyperchain-starter-kit",
+      "url": "https://github.com/aeternity/hyperchain-starter-kit"
+    },
+    {
+      "name": "aepp-bridge",
+      "url": "https://github.com/aeternity/aepp-bridge"
+    }
+  ]
+}
