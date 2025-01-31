@@ -19,7 +19,7 @@ function checkIfRepositoryExists(name: string) {
   return simpleGit(`${reposPath}/${name}`).checkIsRepo();
 }
 
-async function fetchRepositories(repositories: Array<Repository>) {
+async function syncRepositoryDocuments(repositories: Array<Repository>) {
   createFolderIfNotExists(reposPath);
   createFolderIfNotExists(docsPath);
 
@@ -42,6 +42,13 @@ async function fetchRepositories(repositories: Array<Repository>) {
       );
     })
   );
+
+  console.log("All repositories documents fetched successfully!");
+}
+
+function removeRepositories() {
+  fs.rmdirSync(reposPath, { recursive: true });
+  console.log("All repositories removed!");
 }
 
 // MAIN FUNCTION
@@ -49,12 +56,11 @@ async function fetchRepositories(repositories: Array<Repository>) {
   console.log(process.cwd());
 
   const repos = configuration.repositories;
-  await fetchRepositories(repos);
+  await syncRepositoryDocuments(repos);
+  // removeRepositories();
 
   // await simpleGit(process.cwd())
   //   .add(reposPath)
   //   .commit("Update repositories")
   //   .push();
-
-  console.log("All repositories fetched successfully!");
 })();
