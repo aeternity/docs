@@ -2,18 +2,20 @@ import fs from "fs";
 import { simpleGit } from "simple-git";
 import configuration from "./configuration.json";
 
+const reposPath = "docs";
+
 interface Repository {
   name: string;
   url: string;
 }
 
 function createReposFolderIfNotExists() {
-  fs.existsSync("repositories") || fs.mkdirSync("repositories");
+  fs.existsSync(reposPath) || fs.mkdirSync(reposPath);
 }
 
 function checkIfRepositoryExists(name: string) {
-  if (!fs.existsSync(`repositories/${name}`)) return false;
-  return simpleGit(`repositories/${name}`).checkIsRepo();
+  if (!fs.existsSync(`${reposPath}/${name}`)) return false;
+  return simpleGit(`${reposPath}/${name}`).checkIsRepo();
 }
 
 async function fetchRepositories(repositories: Array<Repository>) {
@@ -25,10 +27,10 @@ async function fetchRepositories(repositories: Array<Repository>) {
 
       if (checkIfRepositoryExists(name)) {
         console.log(`Repository ${name} already exists, pulling changes...`);
-        await simpleGit(`repositories/${name}`).pull();
+        await simpleGit(`${reposPath}/${name}`).pull();
       } else {
         console.log(`Cloning repository ${name}...`);
-        await simpleGit("repositories").clone(url, name);
+        await simpleGit(reposPath).clone(url, name);
       }
     })
   );
@@ -41,9 +43,7 @@ async function fetchRepositories(repositories: Array<Repository>) {
   const repos = configuration.repositories;
   await fetchRepositories(repos);
 
-  await simpleGit(process.cwd())
-    .add("repositories")
-    .commit("Update repositories");
+  await simpleGit(process.cwd()).add("docs").commit("Update repositories");
   // .push();
 
   console.log("All repositories fetched successfully!");
