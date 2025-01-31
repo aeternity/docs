@@ -2,15 +2,16 @@ import fs from "fs";
 import { simpleGit } from "simple-git";
 import configuration from "./configuration.json";
 
-const reposPath = "docs";
+const reposPath = "repos";
+const docsPath = "docs";
 
 interface Repository {
   name: string;
   url: string;
 }
 
-function createReposFolderIfNotExists() {
-  fs.existsSync(reposPath) || fs.mkdirSync(reposPath);
+function createFolderIfNotExists(path: string) {
+  fs.existsSync(path) || fs.mkdirSync(path);
 }
 
 function checkIfRepositoryExists(name: string) {
@@ -19,7 +20,8 @@ function checkIfRepositoryExists(name: string) {
 }
 
 async function fetchRepositories(repositories: Array<Repository>) {
-  createReposFolderIfNotExists();
+  createFolderIfNotExists(reposPath);
+  createFolderIfNotExists(docsPath);
 
   await Promise.all(
     repositories.map(async (repository: Repository) => {
@@ -32,6 +34,12 @@ async function fetchRepositories(repositories: Array<Repository>) {
         console.log(`Cloning repository ${name}...`);
         await simpleGit(reposPath).clone(url, name);
       }
+
+      createFolderIfNotExists(`${docsPath}/${name}`);
+      fs.copyFileSync(
+        `${reposPath}/${name}/README.md`,
+        `${docsPath}/${name}/README.md`
+      );
     })
   );
 }
