@@ -51,8 +51,10 @@ async function fetchRepositories(repositories: Array<Repository>) {
   const repos = configuration.repositories;
   await fetchRepositories(repos);
 
-  await simpleGit(process.cwd()).add(reposPath).commit("Update repositories");
-  // .push();
+  // await simpleGit(process.cwd())
+  //   .add(reposPath)
+  //   .commit("Update repositories")
+  //   .push();
 
   console.log("All repositories fetched successfully!");
 })();
