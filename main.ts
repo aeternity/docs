@@ -26,7 +26,7 @@ function checkIfRepositoryExists(name: string) {
   return simpleGit(`${reposPath}/${name}`).checkIsRepo();
 }
 
-async function pullDocuments(repositories: Array<Repository>) {
+async function fetchLatestDocuments(repositories: Array<Repository>) {
   createFolderIfNotExists(reposPath);
   createFolderIfNotExists(docsPath);
 
@@ -88,20 +88,19 @@ function findMarkdownFilesAndCopyToDocs(dir: string) {
 // JOB FUNCTION
 let lastSyncedAt: moment.Moment;
 async function syncDocs() {
-  await pullDocuments(configuration.repositories);
-
-  await simpleGit(process.cwd())
+  const appGit = simpleGit(process.cwd())
+    .reset(ResetMode.HARD)
     .removeRemote("origin")
     .addRemote(
       "origin",
       `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
     )
     .fetch("origin")
-    .reset(ResetMode.HARD)
-    .pull("origin", "master")
-    .add(docsPath)
-    .commit("Update docs")
-    .push("origin", "master");
+    .pull("origin", "master");
+
+  await fetchLatestDocuments(configuration.repositories);
+
+  await appGit.add(docsPath).commit("Update docs").push("origin", "master");
 
   console.log("Docs synced successfully!");
   lastSyncedAt = moment();
