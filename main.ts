@@ -1,20 +1,13 @@
 import fs from "fs";
 import path from "path";
+import moment from "moment";
 import express from "express";
+import { CronJob } from "cron";
 import { simpleGit } from "simple-git";
 import configuration from "./app-config.json";
 
 const app = express();
 const port = 3000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
-});
-
 const reposPath = "repos";
 const docsPath = "docs";
 
@@ -32,24 +25,22 @@ function checkIfRepositoryExists(name: string) {
   return simpleGit(`${reposPath}/${name}`).checkIsRepo();
 }
 
-async function syncRepositoryDocuments(repositories: Array<Repository>) {
+async function pullDocuments(repositories: Array<Repository>) {
   createFolderIfNotExists(reposPath);
   createFolderIfNotExists(docsPath);
 
+  console.log("Fetching repositories documents...");
   await Promise.all(
     repositories.map(async (repository: Repository) => {
       const { name, url } = repository;
 
       if (checkIfRepositoryExists(name)) {
-        console.log(`Repository ${name} already exists, pulling changes...`);
         await simpleGit(`${reposPath}/${name}`).pull();
       } else {
-        console.log(`Cloning repository ${name}...`);
         await simpleGit(reposPath).clone(url, name);
       }
 
       findMarkdownFilesAndCopyToDocs(`${reposPath}/${name}`);
-
       createFolderIfNotExists(`${docsPath}/${name}`);
 
       fs.copyFileSync(
@@ -59,7 +50,7 @@ async function syncRepositoryDocuments(repositories: Array<Repository>) {
     })
   );
 
-  console.log("All repositories documents fetched successfully!");
+  console.log("Documents fetched successfully!");
 }
 
 function findMarkdownFilesAndCopyToDocs(dir: string) {
@@ -93,10 +84,10 @@ function findMarkdownFilesAndCopyToDocs(dir: string) {
   });
 }
 
-// MAIN FUNCTION
-(async function () {
-  const repos = configuration.repositories;
-  await syncRepositoryDocuments(repos);
+// JOB FUNCTION
+let lastSyncedAt: moment.Moment;
+async function syncDocs() {
+  await pullDocuments(configuration.repositories);
 
   await simpleGit(process.cwd())
     .removeRemote("origin")
@@ -108,4 +99,20 @@ function findMarkdownFilesAndCopyToDocs(dir: string) {
     .add(docsPath)
     .commit("Update docs")
     .push("origin", "master");
-})();
+
+  console.log("Docs synced successfully!");
+  lastSyncedAt = moment();
+}
+
+// SERVER
+app.get("/", (_, res) => {
+  res.send("Last synced " + lastSyncedAt.fromNow());
+});
+
+app.listen(port, () => {
+  console.log(`Application is started on port ${port}`);
+  syncDocs();
+});
+
+// CRON JOB
+new CronJob("* * * * *", syncDocs, null, true);
