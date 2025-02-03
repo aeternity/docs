@@ -27,6 +27,10 @@
     {
       "name": "aepp-bridge",
       "url": "https://github.com/aeternity/aepp-bridge"
+    },
+    {
+      "name": "aepp-sdk-js",
+      "url": "https://github.com/aeternity/aepp-sdk-js"
     }
   ]
 }
