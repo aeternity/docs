@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import moment from "moment";
 import express from "express";
-import { CronJob } from "cron";
 import { ResetMode, simpleGit } from "simple-git";
 
 import configuration from "./app-config.json";
@@ -102,8 +101,9 @@ async function syncDocs() {
 
   await appGit.add(docsPath).commit("Update docs").push("origin", "master");
 
-  console.log("Docs synced successfully!");
   lastSyncedAt = moment();
+  console.log("Docs synced successfully!");
+  setTimeout(syncDocs, 1000 * 60);
 }
 
 // SERVER
@@ -115,6 +115,3 @@ app.listen(port, () => {
   console.log(`Application is started on port ${port}`);
   syncDocs();
 });
-
-// CRON JOB
-new CronJob("* * * * *", syncDocs, null, true);
