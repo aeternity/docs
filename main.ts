@@ -95,6 +95,7 @@ async function syncDocs() {
       "origin",
       `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
     )
+    .fetch("origin")
     .pull("origin", "master")
     .add(docsPath)
     .commit("Update docs")
