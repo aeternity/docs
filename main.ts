@@ -112,6 +112,6 @@ app.get("/", (_, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Application is started on port ${port}`);
   syncDocs();
+  console.log(`Application is started on port ${port}`);
 });
