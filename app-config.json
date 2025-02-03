@@ -31,6 +31,10 @@
     {
       "name": "aepp-sdk-js",
       "url": "https://github.com/aeternity/aepp-sdk-js"
+    },
+    {
+      "name": "protocol",
+      "url": "https://github.com/aeternity/protocol"
     }
   ]
 }
