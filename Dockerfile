@@ -10,6 +10,7 @@ RUN apt-get update && \
 RUN git config --global user.email "docs-update@auto.com"
 RUN git config --global user.name "Docs Update Bot"
 RUN git config --global push.autoSetupRemote true
+RUN git config --global pull.rebase false
 
 # Set the working directory in the container
 WORKDIR /app
