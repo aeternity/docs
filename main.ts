@@ -3,7 +3,8 @@ import path from "path";
 import moment from "moment";
 import express from "express";
 import { CronJob } from "cron";
-import { simpleGit } from "simple-git";
+import { ResetMode, simpleGit } from "simple-git";
+
 import configuration from "./app-config.json";
 
 const app = express();
@@ -96,6 +97,7 @@ async function syncDocs() {
       `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
     )
     .fetch("origin")
+    .reset(ResetMode.HARD)
     .pull("origin", "master")
     .add(docsPath)
     .commit("Update docs")
