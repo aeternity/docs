@@ -2,13 +2,15 @@
   "name": "ae-docs",
   "module": "main.ts",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/express": "^5.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "type": "module",
   "dependencies": {
+    "express": "^4.21.2",
     "simple-git": "^3.27.0"
   }
 }

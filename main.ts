@@ -1,7 +1,19 @@
 import fs from "fs";
 import path from "path";
+import express from "express";
 import { simpleGit } from "simple-git";
-import configuration from "./configuration.json";
+import configuration from "./app-config.json";
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}...`);
+});
 
 const reposPath = "repos";
 const docsPath = "docs";
@@ -83,14 +95,17 @@ function findMarkdownFilesAndCopyToDocs(dir: string) {
 
 // MAIN FUNCTION
 (async function () {
-  console.log(process.cwd());
-
   const repos = configuration.repositories;
   await syncRepositoryDocuments(repos);
-  // removeRepositories();
 
-  // await simpleGit(process.cwd())
-  //   .add(reposPath)
-  //   .commit("Update repositories")
-  //   .push();
+  await simpleGit(process.cwd())
+    .removeRemote("origin")
+    .addRemote(
+      "origin",
+      `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
+    )
+    .pull("origin", "master")
+    .add(docsPath)
+    .commit("Update docs")
+    .push("origin", "master");
 })();
