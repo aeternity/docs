@@ -1,1 +1,0 @@
-This file has been moved [here](sophia_features.md)
