@@ -1,18 +1,15 @@
 {
   "name": "docs",
-  "description": "Aeternity Ecosystem Automation for Documentation",
+  "description": "Aeternity Ecosystem Automation for keeping documentations up to date",
   "module": "main.ts",
   "devDependencies": {
-    "@types/bun": "latest",
-    "@types/express": "^5.0.0"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "type": "module",
   "dependencies": {
-    "express": "^4.21.2",
-    "moment": "^2.30.1",
     "simple-git": "^3.27.0"
   }
 }

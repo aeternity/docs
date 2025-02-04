@@ -1,13 +1,9 @@
 import fs from "fs";
 import path from "path";
-import moment from "moment";
-import express from "express";
-import { ResetMode, simpleGit } from "simple-git";
+import { simpleGit } from "simple-git";
 
 import configuration from "./app-config.json";
 
-const app = express();
-const port = 3000;
 const reposPath = "repos";
 const docsPath = "docs";
 
@@ -41,12 +37,6 @@ async function fetchLatestDocuments(repositories: Array<Repository>) {
       }
 
       findMarkdownFilesAndCopyToDocs(`${reposPath}/${name}`);
-      createFolderIfNotExists(`${docsPath}/${name}`);
-
-      fs.copyFileSync(
-        `${reposPath}/${name}/README.md`,
-        `${docsPath}/${name}/README.md`
-      );
     })
   );
 
@@ -85,10 +75,8 @@ function findMarkdownFilesAndCopyToDocs(dir: string) {
 }
 
 // JOB FUNCTION
-let lastSyncedAt: moment.Moment;
-async function syncDocs() {
+await (async function () {
   const appGit = simpleGit(process.cwd())
-    .reset(ResetMode.HARD)
     .removeRemote("origin")
     .addRemote(
       "origin",
@@ -101,17 +89,5 @@ async function syncDocs() {
 
   await appGit.add(docsPath).commit("Update docs").push("origin", "master");
 
-  lastSyncedAt = moment();
   console.log("Docs synced successfully!");
-  setTimeout(syncDocs, 1000 * 60);
-}
-
-// SERVER
-app.get("/", (_, res) => {
-  res.send("Last synced " + lastSyncedAt.fromNow());
-});
-
-app.listen(port, () => {
-  console.log(`Application is started on port ${port}`);
-  syncDocs();
-});
+})();
