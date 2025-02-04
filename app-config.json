@@ -1,40 +1,64 @@
 {
   "repositories": [
     {
-      "name": "aeternity",
-      "url": "https://github.com/aeternity/aeternity"
+      "name": "protocol",
+      "url": "https://github.com/aeternity/protocol"
     },
     {
       "name": "aesophia",
       "url": "https://github.com/aeternity/aesophia"
     },
     {
-      "name": "ae_mdw",
-      "url": "https://github.com/aeternity/ae_mdw"
+      "name": "aesophia_cli",
+      "url": "https://github.com/aeternity/aesophia_cli"
     },
     {
-      "name": "aescan",
-      "url": "https://github.com/aeternity/aescan"
+      "name": "aesophia_http",
+      "url": "https://github.com/aeternity/aesophia_http"
+    },
+    {
+      "name": "aerepl-web-bridge",
+      "url": "https://github.com/aeternity/aerepl-web-bridge"
+    },
+    {
+      "name": "aeproject",
+      "url": "https://github.com/aeternity/aeproject"
+    },
+    {
+      "name": "aestudio",
+      "url": "https://github.com/aeternity/aestudio"
+    },
+    {
+      "name": "aeternity",
+      "url": "https://github.com/aeternity/aeternity"
     },
     {
       "name": "aepp-cli-js",
       "url": "https://github.com/aeternity/aepp-cli-js"
     },
     {
-      "name": "hyperchain-starter-kit",
-      "url": "https://github.com/aeternity/hyperchain-starter-kit"
-    },
-    {
-      "name": "aepp-bridge",
-      "url": "https://github.com/aeternity/aepp-bridge"
-    },
-    {
       "name": "aepp-sdk-js",
       "url": "https://github.com/aeternity/aepp-sdk-js"
     },
     {
-      "name": "protocol",
-      "url": "https://github.com/aeternity/protocol"
+      "name": "ae_mdw",
+      "url": "https://github.com/aeternity/ae_mdw"
+    },
+    {
+      "name": "AEXs",
+      "url": "https://github.com/aeternity/AEXs"
+    },
+    {
+      "name": "aesophia-vscode",
+      "url": "https://github.com/aeternity/aesophia-vscode"
+    },
+    {
+      "name": "superhero-wallet",
+      "url": "https://github.com/superhero-com/superhero-wallet"
+    },
+    {
+      "name": "aepp-bridge",
+      "url": "https://github.com/aeternity/aepp-bridge"
     }
   ]
 }
