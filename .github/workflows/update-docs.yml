@@ -1,0 +1,24 @@
+name: Aeternity Docs Updater
+on:
+  push:
+    branches:
+      - master
+  schedule: ## every day at midnight
+    - cron: 0 0 * * *
+
+jobs:
+  sync-docs:
+    name: sync-docs
+    runs-on: ubuntu-latest
+    env:
+      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN  }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: |
+          git config user.name "GitHub Docs Updater Bot"
+          git config user.email "<>"
+          git config push.autoSetupRemote true
+          git config pull.ff only
+      - run: bun main.ts
