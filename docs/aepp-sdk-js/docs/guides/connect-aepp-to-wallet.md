@@ -13,11 +13,11 @@ This guide describes the 4 steps that are necessary to connect your application 
 
 ## 2. Initialize the `AeSdkAepp` class
 
-https://github.com/aeternity/aepp-sdk-js/blob/f60d1b8a1124b32781769342e4941c8dacf6ad53/examples/browser/aepp/src/StoreAeSdkPlugin.js#L34-L49
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/f60d1b8a1124b32781769342e4941c8dacf6ad53/examples/browser/aepp/src/StoreAeSdkPlugin.js#L34-L49" %}
 
 ## 3. Scan for wallets and connect to a wallet
 
-https://github.com/aeternity/aepp-sdk-js/blob/f60d1b8a1124b32781769342e4941c8dacf6ad53/examples/browser/aepp/src/Connect.vue#L66-L85
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/f60d1b8a1124b32781769342e4941c8dacf6ad53/examples/browser/aepp/src/Connect.vue#L66-L85" %}
 
 Alternatively, aepp can request wallet to share node url it connected to. If agreed, then aepp can
 connect to the wallet's node.
@@ -25,7 +25,7 @@ connect to the wallet's node.
 ```js
 await this.aeSdk.connectToWallet(wallet.getConnection(), {
   connectNode: true,
-  name: "wallet-node",
+  name: 'wallet-node',
   select: true,
 });
 ```
