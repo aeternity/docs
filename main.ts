@@ -5,7 +5,7 @@ import { simpleGit } from "simple-git";
 import configuration from "./app-config.json";
 
 const reposPath = "repos";
-const docsPath = "docs";
+const docsPath = "Developer Documentation";
 
 interface Repository {
   name: string;
