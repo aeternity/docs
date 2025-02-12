@@ -1,60 +1,68 @@
-# user-guide
+# User guide
 
-## User guide
+This guide assumes that you have `aecli` [installed](./README.md#installation) and you checked the [Quick start]('./README.md#quick-start').
 
-This guide assumes that you have `aecli` [installed](./#installation) and you checked the [Quick start](../../docs/aepp-cli-js/'./#quick-start').
+# Table of Contents
 
-## Table of Contents
+- [Account commands](#account-commands)
+- [The name group](#the-name-group)
+- [The contracts group](#the-contracts-group)
+- [The chain group](#the-chain-group)
+- [Inspect command examples](#inspect-command-examples)
+- [Offline signing](#offline-signing)
 
-* [Account commands](user-guide.md#account-commands)
-* [The name group](user-guide.md#the-name-group)
-* [The contracts group](user-guide.md#the-contracts-group)
-* [The chain group](user-guide.md#the-chain-group)
-* [Inspect command examples](user-guide.md#inspect-command-examples)
-* [Offline signing](user-guide.md#offline-signing)
+## Account commands
 
-### Account commands
+The account (wallet) [commands](./reference.md#account-group) are those which create and report on key pairs, and sign transactions, messages. To [perform transactions](./reference.md#spend) within aeternity, you need to have at least two wallets with some coins on their accounts.
 
-The account (wallet) [commands](reference.md#account-group) are those which create and report on key pairs, and sign transactions, messages. To [perform transactions](reference.md#spend) within aeternity, you need to have at least two wallets with some coins on their accounts.
-
-Use [`aecli account create`](reference.md#create) to create a new wallet. You can specify a password for accessing your wallet or just press Enter if you do not want to set a password. The wallet is created at the specified path.
+Use [`aecli account create`](./reference.md#create) to create a new wallet.
+You can specify a password for accessing your wallet or just press Enter if you do not want to set a password. The wallet is created at the specified path.
 
 Alternatively, you can pass the secret key in `[secretKey]` argument to generate a corresponding wallet.
 
-View the address (public key) of your wallet using [`aecli account address`](reference.md#address) command. Also, it can be used to reveal your secret key.
+View the address (public key) of your wallet using [`aecli account address`](./reference.md#address) command. Also, it can be used to reveal your secret key.
 
-### The name group
+## The name group
 
-With the aeternity naming system (AENS), you can assign and register a name to your account or oracle. This way, instead of a complex hash, you can use a name you choose. These names have an expiration period, after which the name will no longer belong to anyone, so it can be claimed again. For more information, see [Aeternity Naming System](https://github.com/aeternity/protocol/blob/master/AENS.md) docs.
+With the aeternity naming system (AENS), you can assign and register a name to your account or oracle. This way, instead of a complex hash, you can use a name you choose.
+These names have an expiration period, after which the name will no longer belong to anyone, so it can be claimed again.
+For more information, see [Aeternity Naming System](https://github.com/aeternity/protocol/blob/master/AENS.md) docs.
 
-The name group consists of the [following commands](reference.md#name-group).
+The name group consists of the [following commands](./reference.md#name-group).
 
-Use [`aecli name full-claim`](reference.md#full-claim) to create and register a name for your account.
+Use [`aecli name full-claim`](./reference.md#full-claim) to create and register a name for your account.
 
-After that, you can use [`aecli name update`](reference.md#update) command to set a name pointer. You can assign the name to another account via pointers, you will still have the right to do other operations with this name.
+After that, you can use [`aecli name update`](./reference.md#update) command to set a name pointer. You can assign the name to another account via pointers, you will still have the right to do other operations with this name.
 
-Don't forget to run [`aecli name extend`](reference.md#extend) from time to time to don't lose access to your name. By default name TTL gets extended to one year, it can't be extended for a longer period.
+Don't forget to run [`aecli name extend`](./reference.md#extend) from time to time to don't lose access to your name. By default name TTL gets extended to one year, it can't be extended for a longer period.
 
-You can [transfer](reference.md#transfer) a name to another account or contract, just indicate another account's address. You will pass all rights regarding the name to another account.
+You can [transfer](./reference.md#transfer) a name to another account or contract, just indicate another account's address. You will pass all rights regarding the name to another account.
 
-At last, you can revoke your name using [`aecli name revoke`](reference.md#revoke). The revoked name can be claimed again after a fixed timeout of 2016 blocks (\~ 4 days).
+At last, you can revoke your name using [`aecli name revoke`](./reference.md#revoke).
+The revoked name can be claimed again after a fixed timeout of 2016 blocks (~ 4 days).
 
-### The contracts group
+## The contracts group
 
 A smart contract is a computer protocol intended to digitally facilitate, verify, or enforce the negotiation or performance of a contract. Smart contracts allow the performance of credible transactions without third parties. These transactions are trackable and irreversible. Smart contracts aim to provide security that is superior to traditional contract law and to reduce other transaction costs associated with contracting.
 
-The contracts group consists of the [following commands](reference.md#contract-group).
+The contracts group consists of the [following commands](./reference.md#contract-group).
 
-**deploy**
+#### deploy
 
 Here is an example contract that we will deploy
+
+<!-- CONTRACT-BEGIN -->
 
 ```
 contract Example =
   entrypoint sum(a: int, b: int) = a + b
 ```
 
-To deploy a contract, run [`aecli contract deploy`](reference.md#deploy) adding a file that should be compiled.
+<!-- CONTRACT-END -->
+
+To deploy a contract, run [`aecli contract deploy`](./reference.md#deploy) adding a file that should be compiled.
+
+<!-- CONTRACT-DEPLOY-BEGIN -->
 
 ```
 $ aecli contract deploy --contractSource ./contract.aes ./wallet.json
@@ -64,9 +72,13 @@ Transaction hash   th_5M77avjrPKezyBrUfkn19C79MnVh9SSoX4Euz4nY75kn9Fxto
 Deploy descriptor  /path/to/contract.aes.deploy.5MbRKEb77pJVZrjVrQYHu2nzr2EKojuthotio1vZ2Q23dkYkV.json
 ```
 
-**call**
+<!-- CONTRACT-DEPLOY-END -->
 
-To execute a function of the contract, run [`aecli contract call`](reference.md#call) command. `sum` is a function which is executed by this contract, `[1, 2]` are arguments of this function:
+#### call
+
+To execute a function of the contract, run [`aecli contract call`](./reference.md#call) command. `sum` is a function which is executed by this contract, `[1, 2]` are arguments of this function:
+
+<!-- CONTRACT-CALL-BEGIN -->
 
 ```
 $ aecli contract call --descrPath contract.aes.deploy.5MbRKEb77pJVZrjVrQYHu2nzr2EKojuthotio1vZ2Q23dkYkV.json sum '[1, 2]' ./wallet.json
@@ -91,17 +103,21 @@ Return value (encoded)  cb_BvMDXHk=
 Return value (decoded)  3
 ```
 
+<!-- CONTRACT-CALL-END -->
+
 In the above, the "Return value (decoded)" is a result of contract execution — it is a sum of values 1 and 2.
 
-### The chain group
+## The chain group
 
-[These commands](reference.md#chain-group) display basic information about the blockchain and require little explanation. [`play`](reference.md#play) moves backward through the blockchain displaying blocks and transactions.
+[These commands](./reference.md#chain-group) display basic information about the blockchain and require little explanation. [`play`](./reference.md#play) moves backward through the blockchain displaying blocks and transactions.
 
-### Inspect command examples
+## Inspect command examples
 
-The [`inspect`](reference.md#inspect) command allows you to see inside various æternity types. Because each æternity type starts with two letters identifying what sort of thing it is, you can throw anything you like at inspect, and it will bravely try to do the right thing.
+The [`inspect`](./reference.md#inspect) command allows you to see inside various æternity types. Because each æternity type starts with two letters identifying what sort of thing it is, you can throw anything you like at inspect, and it will bravely try to do the right thing.
 
-**inspect account by address**
+<!-- INSPECT-EXAMPLES-BEGIN -->
+
+#### inspect account by address
 
 ```
 $ aecli inspect ak_22xzfNRfgYWJmsB1nFAGF3kmabuaGFTzWRobNdpturBgHF83Cx
@@ -111,7 +127,7 @@ Account nonce    3
 No pending transactions
 ```
 
-**inspect transaction**
+#### inspect transaction
 
 ```
 $ aecli inspect th_iirV7mw49NfFY8NbBhbXGBLv9PPT3h1ou11oKtPsJVHGVpWVC
@@ -127,7 +143,7 @@ Fee               0.00001638ae
 Nonce             2
 ```
 
-**inspect block**
+#### inspect block
 
 ```
 $ aecli inspect mh_2DhgyD4np6n3JMsNWVXdtWZE2rAx74sgxL6nb2GsCKB1VnbLxN
@@ -157,11 +173,13 @@ Transactions             1
     Nonce              1513
 ```
 
-### Offline signing
+<!-- INSPECT-EXAMPLES-END -->
+
+## Offline signing
 
 One of `aecli` use cases is offline signing. It requires the below steps.
 
-1. prepare a transaction using [transaction builder](reference.md#tx-group) on any device;
-2. optionally run [`aecli inspect`](reference.md#inspect) to verify the generated transaction before signing on offline device;
-3. sign the transaction by [`aecli account sign`](reference.md#sign) on offline device;
-4. broadcast signed transaction using [`aecli chain broadcast`](reference.md#broadcast) on a device connected to the internet.
+1. prepare a transaction using [transaction builder](./reference.md#tx-group) on any device;
+1. optionally run [`aecli inspect`](./reference.md#inspect) to verify the generated transaction before signing on offline device;
+1. sign the transaction by [`aecli account sign`](./reference.md#sign) on offline device;
+1. broadcast signed transaction using [`aecli chain broadcast`](./reference.md#broadcast) on a device connected to the internet.
