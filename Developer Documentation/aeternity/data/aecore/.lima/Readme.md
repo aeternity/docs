@@ -1,12 +1,6 @@
 # Token migration contract
 
-In the Lima hard-fork the remaining (frozen) Aeternity tokens from the Ethereum
-ERC20 contract are put into a contract and can be retreived by the entity
-holding the correct Ethereum private key. This contract is added to chain as
-part of the hard-fork, and the contract is also funded as part of the
-hard-fork. Here we describe how we prepare the data (the `contracts.json` file)
-that is used during the hard-fork. The `.json`-file has the following format
-and constraints (`apps/aecore/src/aec_fork_block_settings.erl`):
+In the Lima hard-fork the remaining (frozen) Aeternity tokens from the Ethereum ERC20 contract are put into a contract and can be retreived by the entity holding the correct Ethereum private key. This contract is added to chain as part of the hard-fork, and the contract is also funded as part of the hard-fork. Here we describe how we prepare the data (the `contracts.json` file) that is used during the hard-fork. The `.json`-file has the following format and constraints (`apps/aecore/src/aec_fork_block_settings.erl`):
 
 ```
 %%% { <API encoded pubkey for contract> : { "amount" : <integer>,
@@ -27,8 +21,7 @@ and constraints (`apps/aecore/src/aec_fork_block_settings.erl`):
 %%%    that the contract pubkey is visible in the file.
 ```
 
-Since this is the first contract to be added by this mechanism, the nonce to be
-used is `1` and we can compute the contract pubkey using Erlang:
+Since this is the first contract to be added by this mechanism, the nonce to be used is `1` and we can compute the contract pubkey using Erlang:
 
 ```
 25> Locked = aec_governance:locked_coins_holder_account(), Nonce = 1.
@@ -40,17 +33,14 @@ used is `1` and we can compute the contract pubkey using Erlang:
 <<"ct_eJhrbPPS4V97VLKEVbSCJFpdA4uyXiZujQyLqMFoYV88TzDe6">>
 ```
 
-Then we need to compute the total sum of tokens. The final list of accounts
-that has not migrated their tokens is in `test/json/contracts_accounts.json`.
-The sum of the tokens is:
+Then we need to compute the total sum of tokens. The final list of accounts that has not migrated their tokens is in `test/json/contracts_accounts.json`. The sum of the tokens is:
 
 ```
 79> mtree:total_sum_from_json("../test/json/contracts_accounts.json").
 29622067581238053773524138
 ```
 
-We also need the root-hash of the Merkle tree (the tree contains all the
-Ethereum accounts and their respective balances).
+We also need the root-hash of the Merkle tree (the tree contains all the Ethereum accounts and their respective balances).
 
 ```
 80> BigT = mtree:tree_from_json("../test/json/contracts_accounts.json"), ok.
@@ -59,8 +49,7 @@ ok
 "E4DBC69BF2783B81B0423DA3F5B684C1D37CCFAE798474525C4001DB42C67669"
 ```
 
-Finally we need to compile the contract [available
-HERE](test/contracts/token_migration.aes), and the contract init call data:
+Finally we need to compile the contract [available HERE](../../../../../docs/aeternity/data/aecore/.lima/test/contracts/token_migration.aes), and the contract init call data:
 
 ```
 aeternity : ls -l test/contracts/token_migration.aes
@@ -78,6 +67,7 @@ cb_KxFE1kQfKwEARTREQkM2OUJGMjc4M0I4MUIwNDIzREEzRjVCNjg0QzFEMzdDQ0ZBRTc5ODQ3NDUyN
 ```
 
 The resulting data is then:
+
 ```
 {
     "ct_eJhrbPPS4V97VLKEVbSCJFpdA4uyXiZujQyLqMFoYV88TzDe6" :

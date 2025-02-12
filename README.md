@@ -1,33 +1,12 @@
----
-hidden: true
----
+# Developer Documentation
 
-# README
+Here you'll find a curated set of development resources spanning blockchain infrastructure, programming language support, cross-chain bridges, SDKs, and developer tooling. Whether you're a seasoned blockchain developer or just starting your journey with æternity, these tools are designed to streamline your development process and unlock the full potential of decentralized technology.
 
-## Aeternity Docs
+From our Sophia smart contract language support to JavaScript SDKs, middleware tools, and integration bridges, we provide a robust ecosystem that empowers developers to create cutting-edge blockchain applications with efficiency and ease.
 
-This project was created to keep track of the Aeternity ecosystem repositories, and format them under this repo to have a one-of solution for all the documentation that ecosystem provides within various repos.
+Explore the sidebar to dive into specific tools and technologies, and start building with æternity today.
 
-To install dependencies:
+If you want to go back to other sections of the Documentation Hub, click one of the links below or click on "Documentation Hub" in the upper left corner at the top of the sidebar. \
 
-```bash
-bun install
-```
 
-## Configuration and running
-
-To track the desired repositories, repos links and names should be added to `app-config.json`. Also, application requires a GitHub Access Token with write rights to this repo which should be set in `.env` file as in `.env.example`.
-
-Afterwards, following commands can be used;
-
-to run directly:
-
-```bash
-bun run main.ts
-```
-
-to run as a docker container:
-
-```
-docker compose up --build
-```
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td>aeternity Developer Tools</td><td><a href="https://app.gitbook.com/s/ggVl0Jqy6Dd8f38hGk63/aeternity-developer-tools">æternity Developer tools</a></td><td><a href=".gitbook/assets/15deg-gradient.svg">15deg-gradient.svg</a></td></tr><tr><td>aeternity User Tools</td><td><a href="https://app.gitbook.com/s/ggVl0Jqy6Dd8f38hGk63/aeternity-user-tools-and-services">aeternity user tools and services</a></td><td><a href=".gitbook/assets/90deg-gradient.svg">90deg-gradient.svg</a></td></tr><tr><td>Documentation Hub</td><td><a href="https://app.gitbook.com/o/1VcnIqYTDQ9ZuHie5DUA/s/ggVl0Jqy6Dd8f38hGk63/">æternity Documentation Hub</a></td><td><a href=".gitbook/assets/flip-30deg-gradient.svg">flip-30deg-gradient.svg</a></td></tr></tbody></table>

@@ -1,7 +1,6 @@
 # Table of contents
 
-* [README](README.md)
-* [Developer Documentation](developer-documentation/README.md)
+* [Developer Documentation](README.md)
   * [Aeternity Expansions](<Developer Documentation/AEXs/README.md>)
     * [PULL\_REQUEST\_TEMPLATE](<Developer Documentation/AEXs/PULL_REQUEST_TEMPLATE.md>)
     * [AEX X](<Developer Documentation/AEXs/aex-X.md>)
@@ -446,3 +445,4 @@
   * [aerepl-web-bridge](developer-documentation/aerepl-web-bridge/README.md)
     * [AereplApi](<Developer Documentation/aerepl-web-bridge/aerepl_api/README.md>)
     * [aerepl\_components](<Developer Documentation/aerepl-web-bridge/aerepl_components/README.md>)
+* [README](<README (1).md>)
