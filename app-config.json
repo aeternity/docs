@@ -59,6 +59,10 @@
     {
       "name": "aepp-bridge",
       "url": "https://github.com/aeternity/aepp-bridge"
+    },
+    {
+      "name": "aerepl",
+      "url": "https://github.com/aeternity/aerepl"
     }
   ]
 }
