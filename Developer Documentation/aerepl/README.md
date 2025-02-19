@@ -19,6 +19,8 @@ Tools:
 
 Libraries:
 
+
+
 ## Local build
 
 Clone the repo:
@@ -72,6 +74,7 @@ overview of the most fundamental features and typical workflows. If you find
 navigation clunky, please consider using
 [rlwrap](https://github.com/hanslub42/rlwrap).
 
+
 Main functionality of æREPL is to evaluate Sophia expressions:
 
 ```
@@ -100,7 +103,7 @@ AESO> get_x({x = 100, y = 42})
 100
 ```
 
-_NOTE_: in-REPL functions cannot use in-REPL variables and other functions yet.
+*NOTE*: in-REPL functions cannot use in-REPL variables and other functions yet.
 
 # Typechecking
 
@@ -203,34 +206,35 @@ AESO> :set print_unit true
 
 Currently the supported options are:
 
-| Option                    | Arguments            | Description                                                           |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_gas`                | non-neg int          | Determines the amount of gas to be supplied to each query.            |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_value`              | non-neg int          | The `value`, the amount of tokens supplied with the query.            |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_gas_price`          | non-neg int          | The result of `Call.gas_price`                                        |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_origin`             | pubkey               | The account to initiate execution of in-REPL code.                    |
-|                           |                      | Defines `Call.origin` and initial `Call.caller`.                      |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_contract_creator`   | pubkey               | The result of `Contract.creator`.                                     |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_fee`                | non-neg int          | The result of `Call.fee`.                                             |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `call_height`             | non-neg int          | The result of `Chain.block_height`.                                   |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `print_gas`               | `true/false`         | If `true`, REPL will print gas used for evaluating each expression.   |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `print_format`            | `sophia/fate/json`   | Determines the syntax used to display values.                         |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `print_unit`              | `true/false`         | Whether to display unit (`()`).                                       |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `print_type`              | `true/false`         | Whether to display the type after each eval.                          |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `loc_backwards`           | non-neg int          | Number of previous lines to be displayed when using `location`.       |
-| ------------------------- | -------------------- | :-------------------------------------------------------------------- |
-| `loc_forwards`            | non-neg int          | Number of further lines to be displayed when using `location`.        |
+| Option                  | Arguments          | Description                                                         |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_gas`              | non-neg int        | Determines the amount of gas to be supplied to each query.          |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_value`            | non-neg int        | The `value`, the amount of tokens supplied with the query.          |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_gas_price`        | non-neg int        | The result of `Call.gas_price`                                      |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_origin`           | pubkey             | The account to initiate execution of in-REPL code.                  |
+|                         |                    | Defines `Call.origin` and initial `Call.caller`.                    |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_contract_creator` | pubkey             | The result of `Contract.creator`.                                   |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_fee`              | non-neg int        | The result of `Call.fee`.                                           |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `call_height`           | non-neg int        | The result of `Chain.block_height`.                                 |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `print_gas`             | `true/false`       | If `true`, REPL will print gas used for evaluating each expression. |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `print_format`          | `sophia/fate/json` | Determines the syntax used to display values.                       |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `print_unit`            | `true/false`       | Whether to display unit (`()`).                                     |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `print_type`            | `true/false`       | Whether to display the type after each eval.                        |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `loc_backwards`         | non-neg int        | Number of previous lines to be displayed when using `location`.     |
+|-------------------------|--------------------|:--------------------------------------------------------------------|
+| `loc_forwards`          | non-neg int        | Number of further lines to be displayed when using `location`.      |
+
 
 # Output format
 
