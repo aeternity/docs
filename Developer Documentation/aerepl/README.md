@@ -1,4 +1,4 @@
-# æREPL --- an interactive shell for Sophia
+# æREPL - an interactive shell for Sophia
 
 Try Sophia, test your contracts, check "what if", calculate a factorial.
 Completely offline, independently from remote networks, no dockers required.
