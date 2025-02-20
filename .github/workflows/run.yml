@@ -1,5 +1,6 @@
 name: AE Docs Updater Program Runner
 on:
+  workflow_dispatch:
   push:
     branches: [master]
 
