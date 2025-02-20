@@ -2,8 +2,6 @@ name: AE Docs Updater Program Runner
 on:
   push:
     branches: [master]
-  schedule:
-    - cron: "*/5 * * * *" # every 5 minutes
 
 jobs:
   run:
@@ -12,6 +10,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - run: ./program
-        env:
-          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN  }}
+      - name: Run program
+        run: GH_ACCESS_TOKEN=${{ secrets.GH_ACCESS_TOKEN  }} ./program
