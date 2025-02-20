@@ -1,8 +1,8 @@
 name: AE Docs Updater Program Runner
 on:
   workflow_dispatch:
-  push:
-    branches: [master]
+  schedule:
+    - cron: "0 0 * * *" # Run every day at midnight
 
 jobs:
   run:
@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Set GitHub user
+        run: |
+          git config user.name "GitHub Docs Updater Program Build Bot"
+          git config user.email "<>"
       - name: Run program
         env:
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
