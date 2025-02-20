@@ -1,0 +1,14 @@
+name: Aeternity Docs Updater Program Runner
+on:
+  schedule: ## every day at midnight
+    - cron: 0 0 * * *
+
+jobs:
+  run:
+    name: Run Docs Updater Program
+    runs-on: ubuntu-latest
+    env:
+      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN  }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./program
