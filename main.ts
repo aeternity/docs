@@ -116,7 +116,6 @@ await (async function () {
       "origin",
       `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
     )
-    .fetch("origin")
     .pull("origin", "master");
 
   await fetchLatestDocuments(configuration.repositories);
