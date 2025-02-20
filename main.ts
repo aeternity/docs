@@ -29,8 +29,8 @@ function prepareFolders() {
 
 async function fetchLatestDocuments(repositories: Array<Repository>) {
   prepareFolders();
-
   console.log("Fetching repositories documents...");
+
   await Promise.all(
     repositories.map(async (repository: Repository) => {
       const { name, url } = repository;
