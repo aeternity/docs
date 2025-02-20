@@ -1,0 +1,27 @@
+name: Aeternity Docs Updater Program Build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Compile
+        run: bun build main.ts --outfile program --compile
+      - name: Push Program
+        run: |
+          git config user.name "GitHub Docs Updater Program Build Bot"
+          git config user.email "<>"
+          git config push.autoSetupRemote true
+          git pull origin master --ff
+          git add program
+          git commit -m "Update program"
+          git push
