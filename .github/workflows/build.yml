@@ -23,5 +23,5 @@ jobs:
           git config push.autoSetupRemote true
           git pull origin master --ff
           git add program
-          git commit -m "Build program"
+          git commit -m "Build program" || true
           git push
