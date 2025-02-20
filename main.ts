@@ -21,9 +21,14 @@ function checkIfRepositoryExists(name: string) {
   return simpleGit(`${reposPath}/${name}`).checkIsRepo();
 }
 
-async function fetchLatestDocuments(repositories: Array<Repository>) {
+function prepareFolders() {
+  fs.rmSync(docsPath, { recursive: true, force: true });
   createFolderIfNotExists(reposPath);
   createFolderIfNotExists(docsPath);
+}
+
+async function fetchLatestDocuments(repositories: Array<Repository>) {
+  prepareFolders();
 
   console.log("Fetching repositories documents...");
   await Promise.all(
