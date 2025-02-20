@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-  schedule: ## every day at midnight
-    - cron: 0 0 * * *
+  schedule:
+    - cron: "*/5 * * * *" # every 5 minutes
 
 jobs:
   run:
