@@ -14,4 +14,4 @@ jobs:
       - name: Set GH_ACCESS_TOKEN
         run: export GH_ACCESS_TOKEN=${{ secrets.GH_ACCESS_TOKEN }}
       - name: Run program
-        run: GH_ACCESS_TOKEN=$GH_ACCESS_TOKEN ./program
+        run: ./program
