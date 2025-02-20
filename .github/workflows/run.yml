@@ -1,8 +1,7 @@
 name: AE Docs Updater Program Runner
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   schedule:
     - cron: "*/5 * * * *" # every 5 minutes
 
