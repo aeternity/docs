@@ -1,4 +1,4 @@
-name: Aeternity Docs Updater Program Runner
+name: AE Docs Updater Program Runner
 on:
   push:
     branches:

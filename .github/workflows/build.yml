@@ -1,4 +1,4 @@
-name: Aeternity Docs Updater Program Build
+name: AE Docs Updater Program Build
 on:
   push:
     branches:
