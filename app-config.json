@@ -63,6 +63,10 @@
     {
       "name": "aerepl",
       "url": "https://github.com/aeternity/aerepl"
+    },
+    {
+      "name": "aescan",
+      "url": "https://github.com/aeternity/aescan"
     }
   ]
 }
