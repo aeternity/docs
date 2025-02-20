@@ -1,5 +1,6 @@
 name: Aeternity Docs Updater Program Runner
 on:
+  workflow_dispatch:
   schedule: ## every day at midnight
     - cron: 0 0 * * *
 
