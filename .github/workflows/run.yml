@@ -1,6 +1,5 @@
-name: AE Docs Updater Program Runner
+name: AE Docs Updater Program Run
 on:
-  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *" # Run every day at midnight
 
