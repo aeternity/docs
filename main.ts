@@ -103,7 +103,7 @@ function formatFileContent(file: string) {
   if (fileChanged) fs.writeFileSync(file, content);
 }
 
-// JOB FUNCTION
+// Main function
 await (async function () {
   if (!Bun.env.GH_ACCESS_TOKEN) {
     console.error("GitHub access token is required!");
