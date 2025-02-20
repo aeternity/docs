@@ -12,4 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run program
-        run: GH_ACCESS_TOKEN=${{ secrets.GH_ACCESS_TOKEN  }} ./program
+        env:
+          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        run: GH_ACCESS_TOKEN=$GH_ACCESS_TOKEN ./program
