@@ -1,6 +1,5 @@
 name: AE Docs Updater Program Build
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
