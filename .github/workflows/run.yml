@@ -16,6 +16,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - uses: actions/checkout@v4
-      - run: |
-          export GH_ACCESS_TOKEN=$GH_ACCESS_TOKEN
-          ./program
+      - run: echo "GH_ACCESS_TOKEN=$GH_ACCESS_TOKEN" > .env && chmod 600 .env
+      - run: ./program
