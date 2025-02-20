@@ -105,17 +105,15 @@ function formatFileContent(file: string) {
 
 // Main function
 await (async function () {
-  if (!Bun.env.GH_ACCESS_TOKEN) {
+  const GH_ACCESS_TOKEN = import.meta.env.GH_ACCESS_TOKEN;
+  if (!GH_ACCESS_TOKEN) {
     console.error("GitHub access token is required!");
     process.exit(1);
   }
 
   const appGit = simpleGit(process.cwd())
     .removeRemote("origin")
-    .addRemote(
-      "origin",
-      `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
-    )
+    .addRemote("origin", `https://${GH_ACCESS_TOKEN}@github.com/aeternity/docs`)
     .pull("origin", "master");
 
   await fetchLatestDocuments(configuration.repositories);
