@@ -25,8 +25,7 @@ jobs:
         env:
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         run: |
-          pwd
-          ls
           git config user.name "GitHub Docs Updater Program Build Bot"
           git config user.email "<>"
+          chmod u+wrx program
           ./program
