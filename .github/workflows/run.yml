@@ -20,10 +20,10 @@ jobs:
         with:
           name: build
           run-id: ${{ env.BUILD_RUN_ID }}
-          github-token: $GH_TOKEN
+          github-token: ${{ github.token }}
       - name: Run program
         env:
-          GH_ACCESS_TOKEN: $GH_TOKEN
+          GH_ACCESS_TOKEN: ${{ github.token }}
         run: |
           git config user.name "GitHub Docs Updater Program Build Bot"
           git config user.email "<>"
