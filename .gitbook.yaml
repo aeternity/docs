@@ -1,2 +1,2 @@
 root: ./Developer Documentation
-ignores: ["INSTALLATION_GUIDE.md"]
+## ignores: ["INSTALLATION_GUIDE.md"]
