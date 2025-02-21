@@ -45,7 +45,9 @@ async function fetchLatestDocuments(repositories: Array<Repository>) {
     })
   );
 
-  console.log("Documents fetched successfully!");
+  fs.copyFileSync("README.md", `${docsPath}/README.md`);
+
+  console.log("Documents fetched and placed to the docs folder.");
 }
 
 function findMarkdownFilesAndCopyToDocs(dir: string) {
