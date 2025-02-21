@@ -107,7 +107,7 @@ function formatFileContent(file: string) {
 
 // Main function
 await (async function () {
-  if (!Bun.env.GH_ACCESS_TOKEN) {
+  if (!Bun.env.GH_TOKEN) {
     console.error("GitHub access token is required!");
     process.exit(1);
   }
@@ -116,7 +116,7 @@ await (async function () {
     .removeRemote("origin")
     .addRemote(
       "origin",
-      `https://${Bun.env.GH_ACCESS_TOKEN}@github.com/aeternity/docs`
+      `https://${Bun.env.GH_TOKEN}@github.com/aeternity/docs`
     )
     .pull("origin", "master");
 
