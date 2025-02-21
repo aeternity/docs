@@ -1,5 +1,5 @@
 ----
-hide: true
+hidden: true
 ---
 
 # Aeternity Docs Updater
