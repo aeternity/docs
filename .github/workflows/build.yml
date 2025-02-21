@@ -16,12 +16,8 @@ jobs:
         run: bun install
       - name: Compile
         run: bun build --compile --minify --env=disable main.ts --outfile program
-      - name: Push Program
-        run: |
-          git config user.name "GitHub Docs Updater Program Build Bot"
-          git config user.email "<>"
-          git config push.autoSetupRemote true
-          git pull origin master --ff
-          git add program
-          git commit -m "Build program" || true
-          git push
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          path: program
+          overwrite: true
