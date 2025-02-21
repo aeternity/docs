@@ -1,5 +1,6 @@
 name: AE Docs Updater Program Run
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *" # Run every day at midnight
 
@@ -8,13 +9,14 @@ jobs:
     name: Run Docs Updater Program
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set GitHub user
-        run: |
-          git config user.name "GitHub Docs Updater Program Build Bot"
-          git config user.email "<>"
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
       - name: Run program
         env:
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-        run: ./program
+        run: |
+          git config user.name "GitHub Docs Updater Program Build Bot"
+          git config user.email "<>"
+          ./program
