@@ -6,6 +6,8 @@ on:
 
 jobs:
   run:
+    env:
+      GH_TOKEN: ${{ github.token }}
     name: Run Docs Updater Program
     runs-on: ubuntu-latest
     steps:
