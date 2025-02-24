@@ -67,6 +67,10 @@
     {
       "name": "aescan",
       "url": "https://github.com/aeternity/aescan"
+    },
+    {
+      "name": "hyperchains-whitepaper",
+      "url": "https://github.com/aeternity/hyperchains-whitepaper"
     }
   ]
 }
