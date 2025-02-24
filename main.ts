@@ -105,6 +105,13 @@ function formatFileContent(file: string) {
   if (fileChanged) fs.writeFileSync(file, content);
 }
 
+function getRepositories() {
+  return configuration.repoUrls.map((url) => ({
+    url,
+    name: url.split("/").pop()!,
+  }));
+}
+
 // Main function
 await (async function () {
   if (!Bun.env.GH_TOKEN) {
@@ -120,7 +127,7 @@ await (async function () {
     )
     .pull("origin", "master");
 
-  await fetchLatestDocuments(configuration.repositories);
+  await fetchLatestDocuments(getRepositories());
   await appGit.add(docsPath).commit("Update docs").push("origin", "master");
 
   console.log("Docs synced successfully!");

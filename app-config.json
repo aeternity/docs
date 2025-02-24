@@ -1,76 +1,22 @@
 {
-  "repositories": [
-    {
-      "name": "protocol",
-      "url": "https://github.com/aeternity/protocol"
-    },
-    {
-      "name": "aesophia",
-      "url": "https://github.com/aeternity/aesophia"
-    },
-    {
-      "name": "aesophia_cli",
-      "url": "https://github.com/aeternity/aesophia_cli"
-    },
-    {
-      "name": "aesophia_http",
-      "url": "https://github.com/aeternity/aesophia_http"
-    },
-    {
-      "name": "aerepl-web-bridge",
-      "url": "https://github.com/aeternity/aerepl-web-bridge"
-    },
-    {
-      "name": "aeproject",
-      "url": "https://github.com/aeternity/aeproject"
-    },
-    {
-      "name": "aestudio",
-      "url": "https://github.com/aeternity/aestudio"
-    },
-    {
-      "name": "aeternity",
-      "url": "https://github.com/aeternity/aeternity"
-    },
-    {
-      "name": "aepp-cli-js",
-      "url": "https://github.com/aeternity/aepp-cli-js"
-    },
-    {
-      "name": "aepp-sdk-js",
-      "url": "https://github.com/aeternity/aepp-sdk-js"
-    },
-    {
-      "name": "ae_mdw",
-      "url": "https://github.com/aeternity/ae_mdw"
-    },
-    {
-      "name": "AEXs",
-      "url": "https://github.com/aeternity/AEXs"
-    },
-    {
-      "name": "aesophia-vscode",
-      "url": "https://github.com/aeternity/aesophia-vscode"
-    },
-    {
-      "name": "superhero-wallet",
-      "url": "https://github.com/superhero-com/superhero-wallet"
-    },
-    {
-      "name": "aepp-bridge",
-      "url": "https://github.com/aeternity/aepp-bridge"
-    },
-    {
-      "name": "aerepl",
-      "url": "https://github.com/aeternity/aerepl"
-    },
-    {
-      "name": "aescan",
-      "url": "https://github.com/aeternity/aescan"
-    },
-    {
-      "name": "hyperchains-whitepaper",
-      "url": "https://github.com/aeternity/hyperchains-whitepaper"
-    }
+  "repoUrls": [
+    "https://github.com/aeternity/protocol",
+    "https://github.com/aeternity/aesophia",
+    "https://github.com/aeternity/aesophia_cli",
+    "https://github.com/aeternity/aesophia_http",
+    "https://github.com/aeternity/aerepl-web-bridge",
+    "https://github.com/aeternity/aeproject",
+    "https://github.com/aeternity/aestudio",
+    "https://github.com/aeternity/aeternity",
+    "https://github.com/aeternity/aepp-cli-js",
+    "https://github.com/aeternity/aepp-sdk-js",
+    "https://github.com/aeternity/ae_mdw",
+    "https://github.com/aeternity/AEXs",
+    "https://github.com/aeternity/aesophia-vscode",
+    "https://github.com/superhero-com/superhero-wallet",
+    "https://github.com/aeternity/aepp-bridge",
+    "https://github.com/aeternity/aerepl",
+    "https://github.com/aeternity/aescan",
+    "https://github.com/aeternity/hyperchains-whitepaper"
   ]
 }
