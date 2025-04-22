@@ -1,4 +1,4 @@
 root: ./Developer Documentation
 
 structure:
-  summary: ./Developer Documentation/aeternity/docs/summary.md
+  summary: ./aeternity/docs/summary.md
