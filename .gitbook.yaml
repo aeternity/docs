@@ -1,2 +1,4 @@
 root: ./Developer Documentation
-## ignores: ["INSTALLATION_GUIDE.md"]
+
+structure:
+  summary: ./Developer Documentation/aeternity/docs/summary.md
