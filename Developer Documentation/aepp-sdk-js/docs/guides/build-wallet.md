@@ -16,14 +16,14 @@ Note:
 
 First you need to create a bridge between your extension and the page. This can be done as follows:
 
-https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/browser/wallet-web-extension/src/content-script.js#L1-L30
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/browser/wallet-web-extension/src/content-script.js#L1-L30" %}
 
 ### 2. Initialize `AeSdkWallet` class
 
 Then you need to initialize `AeSdkWallet` class in your extension and subscribe for new `runtime` connections.
 After the connection is established you can share the wallet details with the application.
 
-https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/browser/wallet-web-extension/src/background.js#L1-L163
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/browser/wallet-web-extension/src/background.js#L1-L163" %}
 
 ## iFrame-based Wallet
 

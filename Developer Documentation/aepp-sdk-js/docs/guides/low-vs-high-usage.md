@@ -29,10 +29,10 @@ Any blockchain state change requires signing a transaction. Transaction should b
 
 Example spend call, using æternity's SDK abstraction:
 
-https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/node/_api-high-level.js#L1-L18
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/node/_api-high-level.js#L1-L18" %}
 
 ## Low-level SDK usage
 
 The same spend execution, but using low-level SDK functions:
 
-https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/node/_api-low-level.js#L1-L19
+{% @github-files/github-code-block url="https://github.com/aeternity/aepp-sdk-js/blob/1cd128798018d98bdd41eff9104442b44b385d46/examples/node/_api-low-level.js#L1-L19" %}
