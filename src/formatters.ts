@@ -8,10 +8,17 @@ function addGitHubCodeBlocks(file: string) {
   let content = fs.readFileSync(file, "utf8");
 
   const ghBlobUrlRegex =
-    /https:\/\/github\.com\/[A-Za-z]+\/([A-Za-z]+(-[A-Za-z]+)+)\/blob\/[A-Za-z0-9]+\/([A-Za-z]+(\/[A-Za-z]+)+)\.[A-Za-z]+#L[0-9]+-L[0-9]+/g;
+    /https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/g;
 
   for (const match of content.matchAll(ghBlobUrlRegex)) {
     const url = match[0];
+    const isGitHubUrl = url.includes("github.com");
+    const isBlobUrl = url.includes("blob");
+    const hasLines = url.includes("#L");
+    const hasDashLine = url.includes("-L");
+
+    if (!isGitHubUrl || !isBlobUrl || !hasLines || !hasDashLine) continue;
+
     const codeBlockForUrl = `{% @github-files/github-code-block url="${url}" %}`;
 
     if (
