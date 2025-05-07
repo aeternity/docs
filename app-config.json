@@ -17,6 +17,7 @@
     "https://github.com/aeternity/aepp-bridge",
     "https://github.com/aeternity/aerepl",
     "https://github.com/aeternity/aescan",
-    "https://github.com/aeternity/hyperchains-whitepaper"
+    "https://github.com/aeternity/hyperchains-whitepaper",
+    "https://github.com/aeternity/aepp-hyperchain-bridge"
   ]
 }
